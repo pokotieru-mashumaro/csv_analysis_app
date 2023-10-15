@@ -10,49 +10,50 @@ import SwiftUI
 struct HomeView: View {
 
     var body: some View {
-        ZStack {
-            Color("bg")
-                .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                Color("bg")
+                    .ignoresSafeArea()
 
-            VStack {
-                Text("ホーム").bold()
-                    .font(.largeTitle)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading)
+                VStack {
+                    Text("ホーム").bold()
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
 
-                VStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        SegmentView(imageName: "figure.arms.open", imageColor: .blue, rightText: Text("1"), title: "回答人数")
+                    VStack(spacing: 16) {
+                        HStack(spacing: 16) {
+                            SegmentView(imageName: "figure.arms.open", imageColor: .blue, rightText: Text("1"), title: "回答人数")
 
-                        SegmentView(imageName: "figure.2.arms.open", imageColor: .red, rightText: Text("1"), title: "彼氏持ち")
+                            SegmentView(imageName: "figure.2.arms.open", imageColor: .red, rightText: Text("1"), title: "彼氏持ち")
+                        }
+
+                        HStack(spacing: 16) {
+                            SegmentView(imageName: "character.book.closed", imageColor: .black, rightText: Text("1"), title: "平均年齢")
+
+                            SegmentView(imageName: "trophy.fill", imageColor: .gray, rightText: Text("1"), title: "勝利数")
+                        }
                     }
 
-                    HStack(spacing: 16) {
-                        SegmentView(imageName: "character.book.closed", imageColor: .black, rightText: Text("1"), title: "平均年齢")
+                    Spacer()
 
-                        SegmentView(imageName: "trophy.fill", imageColor: .gray, rightText: Text("1"), title: "勝利数")
+
+                    VStack(spacing: 12) {
+                        underBotton(icon: "pencil.circle", title: "編集", color: .orange, distinationView: FormView())
+                        underBotton(icon: "plus.circle", title: "追加", color: .blue, distinationView: FormView())
                     }
                 }
-
-                Spacer()
-
-
-                VStack(spacing: 12) {
-                    underBotton(icon: "pencil.circle", title: "編集", color: .orange)
-                    underBotton(icon: "plus.circle", title: "追加", color: .blue)
-                }
+                .padding(.vertical)
             }
-            .padding(.vertical)
         }
     }
 
-    func underBotton(icon: String, title: String, color: Color) -> some View {
-        Button {
-
+    func underBotton(icon: String, title: String, color: Color, distinationView: some View) -> some View {
+        NavigationLink {
+            distinationView
         } label: {
             HStack {
-                Image(systemName: icon)
-
+                Image(systemName: icon).bold()
 
                 Text(title).bold()
             }
@@ -63,7 +64,6 @@ struct HomeView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding(.horizontal)
         }
-
     }
 }
 
@@ -81,7 +81,7 @@ struct SegmentView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 40) {
+            HStack() {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
