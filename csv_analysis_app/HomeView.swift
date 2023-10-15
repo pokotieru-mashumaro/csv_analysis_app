@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.modelContext) var context
+
+    @EnvironmentObject var vm: QuestionsViewModel
 
     var body: some View {
         NavigationStack {
@@ -39,12 +42,15 @@ struct HomeView: View {
 
 
                     VStack(spacing: 12) {
-                        underBotton(icon: "pencil.circle", title: "編集", color: .orange, distinationView: FormView())
+                        underBotton(icon: "pencil.circle", title: "編集", color: .orange, distinationView: TableView())
                         underBotton(icon: "plus.circle", title: "追加", color: .blue, distinationView: FormView())
                     }
                 }
                 .padding(.vertical)
             }
+        }
+        .onAppear{
+            vm.context = self.context
         }
     }
 
@@ -69,6 +75,7 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
+        .environmentObject(QuestionsViewModel())
 }
 
 struct SegmentView: View {

@@ -8,14 +8,11 @@
 import SwiftUI
 
 struct FormView: View {
-    @Environment(\.dismiss) var dismiss
-    @State var numberOfPeople = 1
-    @State var answers: [[Int]] = [
-        [2,0,18,0,2,2],
-        [2,0,18,0,2,2],
-        [2,0,18,0,2,2],
-        [2,0,18,0,2,2],
-    ]
+    @Environment(\.dismiss) private var dismiss
+    
+    @EnvironmentObject var vm: QuestionsViewModel
+
+    @State private var numberOfPeople = 1
 
     var body: some View {
             ZStack {
@@ -57,21 +54,21 @@ struct FormView: View {
                                 .padding(.horizontal)
 
                             HStack(spacing: 16) {
-                                TwoItemPicker(selectedItem: $answers[i][0], title: "彼氏が...", texts: ["いない", "いる"])
+                                TwoItemPicker(selectedItem: $vm.inputAnswers[i][0], title: "彼氏が...", texts: ["いない", "いる"])
 
-                                FourItemPicker(selectedItem: $answers[i][1], title: "かわいい度", rightText: Text("\(answers[i][1])"))
+                                FourItemPicker(selectedItem: $vm.inputAnswers[i][1], title: "かわいい度", rightText: Text("\(vm.inputAnswers[i][1])"))
                             }
 
                             HStack(spacing: 16) {
-                                AgePicker(selectedItem: $answers[i][2], title: "年齢")
+                                AgePicker(selectedItem: $vm.inputAnswers[i][2], title: "年齢")
 
-                                FourItemPicker(selectedItem: $answers[i][3], title: "雰囲気", rightText: Text("\(answers[i][3])"))
+                                FourItemPicker(selectedItem: $vm.inputAnswers[i][3], title: "雰囲気", rightText: Text("\(vm.inputAnswers[i][3])"))
                             }
 
                             HStack(spacing: 16) {
-                                TwoItemPicker(selectedItem: $answers[i][4], title: "ナンパ", texts: ["失敗", "成功"])
+                                TwoItemPicker(selectedItem: $vm.inputAnswers[i][4], title: "ナンパはいかに...", texts: ["失敗", "成功"])
 
-                                TwoItemPicker(selectedItem: $answers[i][5], title: "僕に彼女が...", texts: ["いない", "いる"])
+                                TwoItemPicker(selectedItem: $vm.inputAnswers[i][5], title: "僕に彼女が...", texts: ["いない", "いる"])
                             }
 
                             Divider()
@@ -80,7 +77,10 @@ struct FormView: View {
                     }
 
                     Button {
-
+                        print("###########")
+                        print(vm.inputAnswers)
+                        vm.add(numberOfPeople: numberOfPeople)
+                        dismiss()
                     } label: {
                         HStack {
                             Image(systemName: "plus.circle").bold()
@@ -187,4 +187,5 @@ struct FormView: View {
 
 #Preview {
     FormView()
+        .environmentObject(QuestionsViewModel())
 }

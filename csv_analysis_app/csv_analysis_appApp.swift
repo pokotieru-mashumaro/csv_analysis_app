@@ -12,7 +12,7 @@ import SwiftData
 struct csv_analysis_appApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Questions.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -25,7 +25,8 @@ struct csv_analysis_appApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .environmentObject(QuestionsViewModel())
         }
         .modelContainer(sharedModelContainer)
     }
