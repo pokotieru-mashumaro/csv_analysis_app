@@ -8,17 +8,62 @@
 import SwiftUI
 
 struct HomeView: View {
+
     var body: some View {
-
-
         ZStack {
             Color("bg")
                 .ignoresSafeArea()
 
             VStack {
-                SegmentView(imageName: "figure.arms.open", imageColor: .red, rightText: Text("1"), title: "回答人数")
+                Text("ホーム").bold()
+                    .font(.largeTitle)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+
+                VStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        SegmentView(imageName: "figure.arms.open", imageColor: .blue, rightText: Text("1"), title: "回答人数")
+
+                        SegmentView(imageName: "figure.2.arms.open", imageColor: .red, rightText: Text("1"), title: "彼氏持ち")
+                    }
+
+                    HStack(spacing: 16) {
+                        SegmentView(imageName: "character.book.closed", imageColor: .black, rightText: Text("1"), title: "平均年齢")
+
+                        SegmentView(imageName: "trophy.fill", imageColor: .gray, rightText: Text("1"), title: "勝利数")
+                    }
+                }
+
+                Spacer()
+
+
+                VStack(spacing: 12) {
+                    underBotton(icon: "pencil.circle", title: "編集", color: .orange)
+                    underBotton(icon: "plus.circle", title: "追加", color: .blue)
+                }
             }
+            .padding(.vertical)
         }
+    }
+
+    func underBotton(icon: String, title: String, color: Color) -> some View {
+        Button {
+
+        } label: {
+            HStack {
+                Image(systemName: icon)
+
+
+                Text(title).bold()
+            }
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(color)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.horizontal)
+        }
+
     }
 }
 
@@ -27,7 +72,7 @@ struct HomeView: View {
 }
 
 struct SegmentView: View {
-    let segmentWidth = UIScreen.main.bounds.width / 2 - 30
+    let segmentWidth = UIScreen.main.bounds.width / 2 - 48
 
     let imageName: String
     let imageColor: Color
@@ -60,6 +105,6 @@ struct SegmentView: View {
         .frame(width: segmentWidth)
         .padding(12)
         .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: 14))
     }
 }
