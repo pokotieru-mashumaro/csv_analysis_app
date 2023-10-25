@@ -18,17 +18,43 @@ class QuestionsViewModel: ObservableObject {
         [2,0,18,0,2,2],
     ]
 
-    var answers: [Questions] = []
+    private(set) var answers: [Questions] = []
+    private(set) var ans_count = 0
+    private(set) var boyfriend_count = 0
+    private(set) var age_ave = 0
+    private(set) var win_count = 0
 
     init(context: ModelContext? = nil) {
         self.context = context
         fetchAnswers()
-        print(answers)
     }
 
     func fetchAnswers() {
         let fetchDescriptor = FetchDescriptor<Questions>(sortBy: [SortDescriptor(\.timestamp)])
         answers = (try? (context?.fetch(fetchDescriptor) ?? [])) ?? []
+        ans_count = answers.count
+        reload()
+    }
+
+    func reload() {
+        var bf_count = 0
+        var age_sum = 0
+        var w_count = 0
+
+        for item in answers {
+            bf_count += item.haveaBoyFriend
+            age_sum += item.girlAge
+            w_count += item.myGirlFriend
+        }
+
+        boyfriend_count = bf_count
+        win_count = w_count
+
+        if age_sum != 0 || ans_count != 0 {
+            age_ave = age_sum / age_sum
+        } else {
+            age_ave = 0
+        }
     }
 
     func add(numberOfPeople: Int) {
@@ -55,6 +81,8 @@ class QuestionsViewModel: ObservableObject {
             }
         }
         try? context?.save()
+
+        fetchAnswers()
     }
 }
 
