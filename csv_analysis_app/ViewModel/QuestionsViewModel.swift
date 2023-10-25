@@ -47,5 +47,14 @@ class QuestionsViewModel: ObservableObject {
             [2,0,18,0,2,2],
         ]
     }
+
+    func delete(offsets: IndexSet) {
+        withAnimation {
+            for index in offsets {
+                context?.delete(answers[index])
+            }
+        }
+        try? context?.save()
+    }
 }
 

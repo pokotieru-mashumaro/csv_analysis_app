@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9725425F2AE8A008009894CA /* csv_output.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9725425E2AE8A008009894CA /* csv_output.swift */; };
 		97255F822AD035BF00AD85B4 /* csv_analysis_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97255F812AD035BF00AD85B4 /* csv_analysis_appApp.swift */; };
 		97255F842AD035BF00AD85B4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97255F832AD035BF00AD85B4 /* ContentView.swift */; };
 		97255F862AD035BF00AD85B4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97255F852AD035BF00AD85B4 /* Item.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9725425E2AE8A008009894CA /* csv_output.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csv_output.swift; sourceTree = "<group>"; };
 		97255F7E2AD035BF00AD85B4 /* csv_analysis_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = csv_analysis_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97255F812AD035BF00AD85B4 /* csv_analysis_appApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csv_analysis_appApp.swift; sourceTree = "<group>"; };
 		97255F832AD035BF00AD85B4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				97255F812AD035BF00AD85B4 /* csv_analysis_appApp.swift */,
 				97255F832AD035BF00AD85B4 /* ContentView.swift */,
 				978A3ACA2AD040100001E8EB /* HomeView.swift */,
+				9725425E2AE8A008009894CA /* csv_output.swift */,
 				97465B952ADBCEC2005A020D /* FormView.swift */,
 				97465B9E2ADC3701005A020D /* TableView.swift */,
 				97465BA22ADC3D3A005A020D /* ViewModel */,
@@ -187,6 +190,7 @@
 				97465B9A2ADC1C05005A020D /* IntSlider.swift in Sources */,
 				97465B9F2ADC3701005A020D /* TableView.swift in Sources */,
 				97465B962ADBCEC2005A020D /* FormView.swift in Sources */,
+				9725425F2AE8A008009894CA /* csv_output.swift in Sources */,
 				97465B982ADBD7DA005A020D /* RadioButton.swift in Sources */,
 				97255F842AD035BF00AD85B4 /* ContentView.swift in Sources */,
 				978A3ACB2AD040100001E8EB /* HomeView.swift in Sources */,
@@ -326,6 +330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = csv_analysis_app/csv_analysis_app.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"csv_analysis_app/Preview Content\"";
@@ -345,6 +350,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pokotieru.csv-analysis-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -357,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = csv_analysis_app/csv_analysis_app.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"csv_analysis_app/Preview Content\"";
@@ -376,6 +383,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "pokotieru.csv-analysis-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -102,6 +102,7 @@ struct FormView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
                             dismiss()
+                            vm.fetchAnswers()
                         }) {
                             HStack {
                                 Image(systemName: "chevron.backward")
